@@ -1,0 +1,58 @@
+﻿<Window xmlns:oxy="http://oxyplot.org/wpf"  x:Class="DiplomProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiplomProject" xmlns:vm="clr-namespace:DiplomProject.ViewModels" xmlns:colormaps="clr-namespace:ScottPlot.Drawing.Colormaps;assembly=ScottPlot"
+        mc:Ignorable="d"
+        Title="Главное окно" Height="450" Width="800">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+    <Border>
+        <TabControl Background="#babad1">
+            <TabItem Header="Данные">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ComboBox Grid.Row="0"/>
+                        <ListBox Grid.Row="1"/>
+                    </Grid>
+                    <DataGrid Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="График">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="12*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Бухгалтерский учет" HorizontalAlignment="Left" Margin="5,12,0,0"/>
+                <Button Height="20" Width="20" Margin="0,5,5,0" HorizontalAlignment="Right">
+                    <Image Source="../Styles/Images/Reboot.png"/>
+                </Button>
+                <oxy:PlotView Grid.Row="1" Model="{Binding MainModel, UpdateSourceTrigger=PropertyChanged}"/>
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="100"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="1" Margin="4" Content="Добавить заказ"/>
+                    <Button Grid.Column="2" Margin="4" Content="Подробности"/>
+                </Grid>
+            </Grid>
+            </TabItem>
+        </TabControl>
+    
+    </Border>
+</Window>
