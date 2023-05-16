@@ -208,13 +208,21 @@ namespace DiplomProject.Models
 
         public static void AddDataAboutNewOrder() 
         {
-            var sda = new SqlDataAdapter($"INSERT INTO Заказ(Сумма, Дата, Срок_доставки_в_днях, Комментарий) VALUES({NewOfferWindowViewModel.orderSumForTransfer}, Cast({NewOfferWindowViewModel.orderDateForTransfer.ToString()} as date), {NewOfferWindowViewModel.orderDaysCountForTransfer}, '{NewOfferWindowViewModel.orderCommentForTransfer}')", con);
+            var sda = new SqlDataAdapter($"INSERT INTO Заказ(Сумма, Дата, Срок_доставки_в_днях, Комментарий) VALUES({NewOfferWindowViewModel.orderSumForTransfer}, Cast('{NewOfferWindowViewModel.orderDateForTransfer.ToString()}' as date), {NewOfferWindowViewModel.orderDaysCountForTransfer}, '{NewOfferWindowViewModel.orderCommentForTransfer}')", con);
+            var dt = new DataTable();
+            dt = new DataTable();
+            sda.Fill(dt);
             sda = new SqlDataAdapter($"INSERT INTO Заказ_клиент(ID_клиента, ID_заказа) VALUES((SELECT ID_клиента FROM Клиент WHERE Номер_телефона = '{NewOfferWindowViewModel.choosedClientPhoneNumberForTransfer}'),(SELECT ID_Заказа FROM Заказ WHERE ID_заказа = (SELECT MAX(ID_заказа) FROM Заказ)))", con);
+            dt = new DataTable();
+            sda.Fill(dt);
             string actualSQLDataSetOfPositions = "";
             foreach (var item in NewOfferWindowViewModel.actualElementsOfPositions)
-                actualSQLDataSetOfPositions += '(' + $"'{item.Articul}', " + $"'{item.Name}', " + $"CAST({item.PurchasePrice} AS float), " + $"CAST({item.SalePrice} AS float), " + "(SELECT ID_заказа From Заказ where ID_заказа = (select max(ID_заказа) from Заказ)" + "), ";
+                actualSQLDataSetOfPositions += '(' + $"'{item.Articul}', " + $"'{item.Name}', " + $"CAST({item.PurchasePrice} AS float), " + $"CAST({item.SalePrice} AS float), " + "(SELECT ID_заказа From Заказ where ID_заказа = (select max(ID_заказа) from Заказ))" + "), ";
             actualSQLDataSetOfPositions = actualSQLDataSetOfPositions.Substring(0, actualSQLDataSetOfPositions.Length-2);
-            sda = new SqlDataAdapter("INSERT INTO Позиция(Артикул, Наименование, Цена_закупки, Цена_продажи, ID_заказа) VALUES"+actualSQLDataSetOfPositions, con);
+            sda = new SqlDataAdapter("INSERT INTO Позиция(Артикул, Наименование, Цена_покупки, Цена_продажи, ID_заказа) VALUES"+actualSQLDataSetOfPositions, con);
+            dt = new DataTable();
+            MessageBox.Show(actualSQLDataSetOfPositions);
+            sda.Fill(dt);
         }
     }
 }

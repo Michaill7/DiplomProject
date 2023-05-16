@@ -119,13 +119,13 @@ namespace DiplomProject.ViewModels
             ChoosedClientPhone = choosedClientPhoneNumberForTransfer;
         }
 
-        public static List<Elements> actualElementsOfPositions;
+        public static List<Elements> actualElementsOfPositions = new List<Elements>() { };
 
-        public static double orderSumForTransfer;
-        public static System.DateTime orderDateForTransfer;
-        public static int orderDaysCountForTransfer;
-        public static string orderCommentForTransfer;
-        public static string choosedVINForTransfer;
+        public static double orderSumForTransfer = 0;
+        public static System.DateTime orderDateForTransfer = System.DateTime.Now;
+        public static int orderDaysCountForTransfer = 0;
+        public static string orderCommentForTransfer = "";
+        public static string choosedVINForTransfer = "";
         public static string choosedClientPhoneNumberForTransfer;
 
         public ICommand NewOfferWindowOpen { get; }

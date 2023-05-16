@@ -12,7 +12,10 @@ namespace DiplomProject.Infrastructure.Commands.CommandsCollection
     {
         public static bool AddNewOrderToDBCanExecute(object o) 
         {
-            return true;
+            if (NewOfferWindowViewModel.orderSumForTransfer == 0 || NewOfferWindowViewModel.orderDaysCountForTransfer==0 || NewOfferWindowViewModel.choosedVINForTransfer == ""|| NewOfferWindowViewModel.actualElementsOfPositions.Count==0)
+                return false;
+            else 
+                return true;
         }
 
         public static void AddNewOrderToDBExecuted(object o) 
