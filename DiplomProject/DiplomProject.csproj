@@ -89,12 +89,68 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Infrastructure\Commands\Base\Command.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\AddNewOrderToDB.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\AddNewPositionToListCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\ChooseCarFromListCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\ChooseClientFromListCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\DeletePositionFromListCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\OpenActualListOfCarsCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\OpenActualListOfClientsCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\OpenAddAutoWindowCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\OpenAddClientWindowCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\OpenNewPositionWindowCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\OpenOfferWindowCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\SaveInfoAboutNewAutoCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\SaveInfoAboutNewClientCommand.cs" />
+    <Compile Include="Infrastructure\Commands\CommandsCollection\SavePositionsListInNewOrderCommand.cs" />
     <Compile Include="Infrastructure\Commands\LyambdaCommand.cs" />
+    <Compile Include="Models\Accounting.cs" />
+    <Compile Include="Models\Cars.cs" />
+    <Compile Include="Models\Clients.cs" />
+    <Compile Include="Models\DataBaseClassWorker.cs" />
+    <Compile Include="Models\Elements.cs" />
+    <Compile Include="ViewModels\ActualListOfCarsWindowViewModel.cs" />
+    <Compile Include="ViewModels\ActualListOfClientsWindowViewModel.cs" />
+    <Compile Include="ViewModels\AddAutoWindowViewModel.cs" />
+    <Compile Include="ViewModels\AddClientWindowViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\NewOfferWindowViewModel.cs" />
+    <Compile Include="ViewModels\NewPositionWindowViewModel.cs" />
+    <Compile Include="Views\ActualListOfCarsWindow.xaml.cs">
+      <DependentUpon>ActualListOfCarsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ActualListOfClientsWindow.xaml.cs">
+      <DependentUpon>ActualListOfClientsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddAutoWindow.xaml.cs">
+      <DependentUpon>AddAutoWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddClientWindow.xaml.cs">
+      <DependentUpon>AddClientWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewOfferWindow.xaml.cs">
       <DependentUpon>NewOfferWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewPositinonWindow.xaml.cs">
+      <DependentUpon>NewPositinonWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\ActualListOfCarsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ActualListOfClientsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddAutoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,6 +164,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\NewOfferWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewPositinonWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,10 +202,7 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\Commands\CommandsCollection\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Styles\Images\Reboot.png" />
   </ItemGroup>

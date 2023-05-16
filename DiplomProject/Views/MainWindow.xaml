@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DiplomProject" xmlns:vm="clr-namespace:DiplomProject.ViewModels" xmlns:colormaps="clr-namespace:ScottPlot.Drawing.Colormaps;assembly=ScottPlot"
         mc:Ignorable="d"
-        Title="Главное окно" Height="450" Width="800">
+        Title="Главное окно" Height="450" Width="900" MinWidth="900">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
@@ -22,10 +22,10 @@
                             <RowDefinition Height="25"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <ComboBox Grid.Row="0"/>
-                        <ListBox Grid.Row="1"/>
+                        <ComboBox Grid.Row="0" ItemsSource="{Binding TablesList, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding CurrentListItem, UpdateSourceTrigger=PropertyChanged}"/>
+                        <ListBox Grid.Row="1" ItemsSource="{Binding ActualList, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding SelectedItemInList, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
-                    <DataGrid Grid.Column="1"/>
+                    <DataGrid Grid.Column="1" ItemsSource="{Binding ActualDataGridData, UpdateSourceTrigger=PropertyChanged}" ColumnWidth="1*"/>
                 </Grid>
             </TabItem>
             <TabItem Header="График">
@@ -47,7 +47,7 @@
                         <ColumnDefinition Width="100"/>
                         <ColumnDefinition Width="100"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1" Margin="4" Content="Добавить заказ"/>
+                        <Button Grid.Column="1" Margin="4" Content="Добавить заказ" Command="{Binding OpenOfferWindow}"/>
                     <Button Grid.Column="2" Margin="4" Content="Подробности"/>
                 </Grid>
             </Grid>

@@ -1,0 +1,20 @@
+﻿<Window x:Class="DiplomProject.Views.ActualListOfClientsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DiplomProject.Views" xmlns:vm="clr-namespace:DiplomProject.ViewModels"
+        mc:Ignorable="d"
+        Title="ActualListOfClientsWindow" Height="600" Width="400" ResizeMode="NoResize">
+    <Window.DataContext>
+        <vm:ActualListOfClientsWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="0.12*"/>
+        </Grid.RowDefinitions>
+        <ListBox Grid.Row="0" Margin="5" ItemsSource="{Binding ActualClientsList, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding SelecteditemIndexInList, UpdateSourceTrigger=PropertyChanged}"/>
+        <Button Content="Выбрать" Grid.Row="1" Margin="130,10" Command="{Binding ChoosClient}"/>
+    </Grid>
+</Window>
